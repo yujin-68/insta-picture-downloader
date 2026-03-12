@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# InstaPic Downloader (인스타그램 사진 다운로더)
 
-## Getting Started
+인스타그램 게시물 URL을 입력하여 해당 게시물에 포함된 고화질 사진(이미지)들을 추출하고 로컬 기기로 다운로드할 수 있도록 도와주는 웹 서비스입니다. 이 프로젝트는 모던하고 예쁜 UI(Glassmorphism 기반)를 가지고 있으며, 인스타그램 크롤링 로직 연동을 위한 백엔드 API 라우트를 포함하고 있습니다.
 
-First, run the development server:
+## 주요 기능
+- **URL 기반 추출**: 인스타그램 게시물 주소를 입력받아 이미지를 추출
+- **멀티 이미지 지원**: 한 게시물 내의 여러 장(Carousel)의 이미지를 직관적인 그리드 형태로 제공
+- **고화질 다운로드**: 추출된 이미지를 클릭 한 번으로 사용자 기기에 저장
+- **반응형 모던 UI**: `Next.js`와 순수 CSS 그라디언트, 투명도(Glass) 효과를 결합하여 데스크톱 및 모바일 환경에서 모두 예쁘게 렌더링
+
+> **참고**: 현재 백엔드 API(`src/app/api/extract/route.ts`)는 UI 및 다운로드 기능 동작 확인용 Mock 데이터를 반환하도록 임시 구현되어 있습니다. 실제 인스타그램 데이터를 추출하려면 RapidAPI의 `Instagram Scraper API` 등의 서드파티 서비스 키를 발급받아 해당 파일에 연동해야 합니다.
+
+---
+
+## 🚀 시작하는 방법 (How to Start)
+
+이 프로젝트는 `Next.js` 프레임워크를 기반으로 작성되었습니다. 로컬 개발 환경에서 실행하려면 다음 단계를 따라주세요.
+
+### 1. 요구 사항
+- `Node.js` (버전 18.x 이상 권장)
+- `npm` (Node.js 설치 시 자동 포함)
+
+### 2. 프로젝트 설치 및 실행
+
+1. **저장소 클론(Clone) 및 의존성 패키지 설치**
+터미널을 열고 프로젝트 폴더로 이동한 뒤, 아래 명령어를 순서대로 실행합니다.
+
+```bash
+# 의존성 모듈 설치
+npm install
+```
+
+2. **개발 서버 실행**
+설치가 완료되었다면 개발 서버를 시작합니다.
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. **브라우저 접속**
+터미널에 표시된 안내에 따라 브라우저에서 아래 주소로 접속합니다.
+```text
+http://localhost:3000
+```
+이제 화면의 입력창에 인스타그램 URL을 넣고 기능들을 테스트해 볼 수 있습니다!
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🛠 기술 스택
+- **프론트엔드**: Next.js (App Router), React, Vanilla CSS (Globals.css)
+- **백엔드 (API 라우트)**: Next.js API Routes (`/api/extract` 엔드포인트)
